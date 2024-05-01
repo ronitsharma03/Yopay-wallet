@@ -13,7 +13,9 @@ export const SendMoney = () => {
     const sendMoney = async () => {
         
         if (!amount || parseFloat(amount) < 1) {
-            toast.error("Minimum amount to send is Rs 1");
+            toast.error("Minimum amount to send is Rs 1", {
+                duration: 800
+            });
             return; // Exit the function if amount is invalid
         }
         toast.loading("Processing...", {
