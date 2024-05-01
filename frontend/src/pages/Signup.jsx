@@ -46,16 +46,16 @@ export const Signup = () => {
                     <SubHeading label={"Enter your information to create a new account"} />
                     <InputBox onChange={e => {
                         setFirstName(e.target.value)
-                    }} placeholder={"fistname"} label={"First Name"} />
+                    }} placeholder={"Firstname"} label={"First Name"} type={"text"} />
                     <InputBox onChange={e => {
                         setLastName(e.target.value)
-                    }} placeholder={"lastname"} label={"Last Name"} />
+                    }} placeholder={"Lastname"} label={"Last Name"} type={"text"}/>
                     <InputBox onChange={e => {
                         setUsername(e.target.value)
-                    }} placeholder={"your@example.com"} label={"Email"} />
+                    }} placeholder={"your@example.com"} label={"Email"} type={"email"}/>
                     <InputBox onChange={e => {
                         setPassword(e.target.value)
-                    }} placeholder={"122334"} label={"Password"} />
+                    }} placeholder={"123456"} label={"Password"} type={"password"}/>
                     <div className="pt-4">
                         <Button onClick={SignupData} label={"Sign up"} />
                     </div>

@@ -44,10 +44,10 @@ export const Signin = () => {
         <SubHeading label={"Enter your credentials to access your account"} />
         <InputBox onChange={e => {
           setUsername(e.target.value)
-        }} placeholder="your@gmail.com" label={"Email"} />
+        }} placeholder="your@gmail.com" label={"Email"} type={"email"} />
         <InputBox onChange={e => {
           setPassword(e.target.value)
-        }} placeholder="123456" label={"Password"} />
+        }} placeholder="123456" label={"Password"} type={"password"}/>
         <div className="pt-4">
           <Button onClick={postData} label={"Sign in"} />
         </div>

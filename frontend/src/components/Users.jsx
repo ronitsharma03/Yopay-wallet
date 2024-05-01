@@ -30,15 +30,15 @@ export const Users = () => {
         <div className="my-2">
             <input onChange={e => [
                 setFilter(e.target.value)
-            ]} type="text" placeholder="Search users" className="w-full px-3 py-2 border rounded border-slate-200"></input>
+            ]} type="text" placeholder="Search users..." className="w-full px-3 py-2 border rounded border-slate-200"></input>
         </div>
         <div className="text-lg flex flex-col gap-4 pt-5">
             {
-                users.map((user, index) => {
+                users ? users.map((user, index) => {
                     return (
                         <User key={index} user={user} />
                     )
-                })
+                })  : <div className="border-8 border-l-zinc-500 rounded-full w-16 h-16 animate-spin"></div>
             }
         </div>
     </>

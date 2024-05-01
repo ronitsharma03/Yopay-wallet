@@ -7,7 +7,7 @@ export const Home = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const fetchHomePage = async () => {
-            await new Promise(resolve => setTimeout(resolve, 3000));
+            // await new Promise(resolve => setTimeout(resolve, 3000));
             const token = localStorage.getItem("token");
             if (!token) {
                 navigate("/signin");
