@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.use(cors()); // To allow request to this backend from a frontend since backend and frontend are going to be deployed
 // separately
 app.use(express.json());

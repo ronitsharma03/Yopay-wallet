@@ -3,12 +3,17 @@ const mongoose = require("mongoose");
 
 
 // Error handeling if any error occured while connecting to the mongodb database
-try {
-    mongoose.connect(process.env.MONGODB_URL);
+const connectDb = async () => {
+    try {
+        const connectionInstance = await mongoose.connect(process.env.MONGODB_URL);
+        console.log(`MONGODB Connected: ${connectionInstance.connection.host}`)
+    }
+    catch (e) {
+        console.log("Cannot connect to database Error: " + e);
+    }
 }
-catch (e) {
-    console.log("Cannot connect to database Error: " + e);
-}
+connectDb();
+
 
 
 // Elegant userSchema better than simple schema

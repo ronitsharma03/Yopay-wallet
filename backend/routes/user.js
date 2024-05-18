@@ -143,7 +143,7 @@ router.post("/signin", async (req, res) => {
 
 // Update profile route
 const updateBody = zod.object({
-    password: zod.string().optional(),
+    password: zod.string().min(6).optional(),
     firstName: zod.string().optional(),
     lastName: zod.string().optional()
 });
@@ -156,7 +156,15 @@ router.put('/profile', authMiddleware, async (req, res) => {
         });
     }
     try {
-        await User.updateOne({ _id: req.userId }, req.body);
+        const { password, firstname, lastname } = req.body;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        await User.updateOne({ _id: req.userId }, 
+            {
+                password: hashedPassword,
+                firstName: firstname,
+                lastName: lastname
+            }
+        );
     }
     catch (error) {
         return res.status(411).json({
