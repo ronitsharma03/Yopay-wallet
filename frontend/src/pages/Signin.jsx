@@ -25,7 +25,7 @@ export const Signin = () => {
       localStorage.setItem("token", response.data.token);
       const firstname = ((response.data.firstName).charAt(0).toUpperCase() + (response.data.firstName).slice(1));
       localStorage.setItem("name", firstname);
-      toast.success("Signing in...", {
+      toast.success("Signed in", {
         id: "signin"
       });
 
