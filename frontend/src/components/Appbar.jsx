@@ -10,7 +10,7 @@ export const Appbar = ({ user }) => {
         toast.loading("logging out...",{
             id: "logout"
         });
-        // await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 1500));
         localStorage.clear();
         toast.success("Logged out", {
             id: "logout"
