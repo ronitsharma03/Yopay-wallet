@@ -15,6 +15,9 @@ export const Signin = () => {
 
   const postData = async () => {
     try {
+      toast.loading("Signing in...", {
+        id: "signin"
+      });
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signin`, {
         username,
         password
@@ -22,16 +25,16 @@ export const Signin = () => {
       localStorage.setItem("token", response.data.token);
       const firstname = ((response.data.firstName).charAt(0).toUpperCase() + (response.data.firstName).slice(1));
       localStorage.setItem("name", firstname);
-      toast.loading("Signing in...", {
-        duration: 1000
+      toast.success("Signing in...", {
+        id: "signin"
       });
 
       await new Promise(resolve => setTimeout(resolve, 1200));
       navigate("/dashboard");
     } catch (error) {
-      toast.error("Check username and password!", {
-        duration: 2000
-      });
+      toast.error(error.response?.data?.message || "An error occurred while logging in", {
+                id: "signin"
+            });
     }
   }
   // console.log(postData)
