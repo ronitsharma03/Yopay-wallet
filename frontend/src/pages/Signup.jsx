@@ -17,6 +17,9 @@ export const Signup = () => {
     const [password, setPassword] = useState("");
 
     const SignupData = async () => {
+        toast.loading("Signing up...", {
+            id: "Signup"
+        });
         try {
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, {
                 username,
@@ -26,14 +29,14 @@ export const Signup = () => {
             });
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("name", ((firstName).charAt(0).toUpperCase() + (firstName).slice(1)));
-            toast.loading("Signing up...", {
-                duration: 1000
+            toast.success(response.data.message, {
+                id: "Signup"
             });
             await new Promise(resolve => setTimeout(resolve, 1200));
             navigate("/dashboard");
         } catch (error) {
-            toast.error("Check Inputs!", {
-                duration: 2000
+            toast.error(error.response?.data?.message, {
+                id: "Signup"
             });
         }
     }
